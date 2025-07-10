@@ -1,0 +1,18 @@
+1. Developer Pushes Code (main branch)
+   ↓
+2. AWS CodePipeline Triggers
+   ├─ Source Stage:
+   │   └── Fetch from GitHub/GitLab/CodeCommit
+   ├─ Build Stage:
+   │   ├── Compile Go App (Go build/test)
+   │   ├── Run Unit Tests
+   │   ├── Security Scans (Snyk, Trivy, etc.)
+   │   └── Create Docker Image → Push to Amazon ECR
+   ├─ Staging Deploy:
+   │   └── Deploy using ECS Fargate / EKS / EC2 via CDK
+   │       └── Smoke Tests & Integration Tests
+   ├─ Approval Stage:
+   │   └── Manual Approval (QA/Lead)
+   └─ Production Deploy:
+       ├── Provision infra via CDK (if needed)
+       └── Deploy image from ECR
