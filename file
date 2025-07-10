@@ -1,0 +1,13 @@
+aws-codepipeline-go/
+├── buildspec/
+│   ├── buildspec-app.yml       <-- Build, test, security scan, push image
+│   └── buildspec-deploy.yml    <-- CDK deployment
+├── cdk/
+│   ├── bin/
+│   │   └── app.ts
+│   └── lib/
+│       └── ecs-stack.ts
+├── cdk.json
+├── Dockerfile
+├── main.go
+├── README.md
